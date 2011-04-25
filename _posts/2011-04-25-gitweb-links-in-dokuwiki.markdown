@@ -23,7 +23,7 @@ This meant that for each project I had to create an entry into `conf/interwiki.l
 After switching over to Git, I found that gitweb URLs are quite more complicated than their mercurial counterparts - and I wanted a generic solution to this problem, not
 hacking the wiki's configuration for each and every project added to the repository.
 
-Fortunately enough, DokuWiki's syntax can be extended [quite easily](http://www.dokuwiki.org/devel:syntax_plugins), so I thought that I could write something that could
+Fortunately enough, DokuWiki's syntax can be extended [quite easily](http://www.dokuwiki.org/devel:syntax_plugins), so I thought that I could write something that would
 allow me to write
 
      [[Git?bahamut.git#partial-hash|This]] is the commit you're looking for
