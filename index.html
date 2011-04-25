@@ -1,1 +1,90 @@
-Temporary placeholder. Coming soon...
+---
+layout: default
+title: Matteo Panella
+projects:
+    - name: gwlinks
+      description: Dokuwiki plugin for generating links to changesets on gitweb
+      url: https://github.com/rfc1459/gwlinks/
+
+    - name: bluebox
+      description: New-world IRCd for Azzurra IRC Network (based on ircd-ratbox)
+      url: http://devel.azzurra.org/bluebox
+
+    - name: libureg
+      description: A small, non-backtracking regex library
+      url: https://bitbucket.org/rfc1459/libureg
+
+---
+
+<link rel="me" type="text/html" href="http://morpheus.level28.org/" />
+
+<div id="home">
+  <a name="about"></a>
+  <h1>About</h1>
+  <ul class="posts">
+    <li>
+      <div class="first"><span>Matteo Panella</span></div>
+      <div class="sep"> &raquo; </div>
+      <div class="second">I'm a CS student living in <a href="http://goo.gl/maps/4xEa">L'Aquila, Italy</a>,
+        development lead of <a href="http://www.azzurra.org/">Azzurra IRC Network</a> and full-time geek.
+      </div>
+    </li>
+    <li>
+      <div class="first">&nbsp;</div>
+      <div class="sep"> &raquo; </div>
+      <div class="second">Here you can find a collection of <a href="#blog">technical nonsense</a>,
+        <a href="#projects">open source projects</a> I work on and <a href="#other">other stuff</a> I work on.
+      </div>
+    </li>
+    <li>
+      <div class="first">&nbsp;</div>
+      <div class="sep"> &raquo; </div>
+      <div class="second">You can get in touch with me via mail (see site footer), <a href="https://twitter.com/rfc1459/">Twitter</a>
+        or on <a href="irc://irc.eu.azzurra.org">Azzurra IRC Network</a> (you may need to register your nickname). I usually hang around
+        on #italia, #python and #quizzer (nickname: <code>morph</code>).
+      </div>
+    </li>
+  </ul>
+
+  <a name="blog"></a>
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% if site.posts != empty %}
+        {% for post in site.posts %}
+          <li>
+            <div class="first"><span>{{ post.date | date_to_string }}</span></div>
+            <div class="sep"> &raquo; </div>
+            <div class="second"><a href="{{ post.url }}">{{ post.title }}</a></div>
+          </li>
+        {% endfor %}
+    {% else %}
+      <li>
+        <div class="first">&nbsp;</div>
+        <div class="sep"> &raquo; </div>
+        <div class="second">None so far. Check back later.</div>
+      </li>
+    {% endif %}
+  </ul>
+
+  <a name="projects"></a>
+  <h1>Open Source Projects</h1>
+  <ul class="posts">
+    {% for project in page.projects %}
+      <li>
+        <div class="first"><span><a href="{{ project.url }}">{{ project.name }}</a></span></div>
+        <div class="sep"> &raquo; </div>
+        <div class="second">{{ project.description }}</div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a name="other"></a>
+  <h1>Other stuff I work on</h1>
+  <ul class="posts">
+    <li>
+      <div class="first">&nbsp;</div>
+      <div class="sep"> &raquo; </div>
+      <div class="second">Nothing noteworthy yet ;-)</div>
+    </li>
+  </ul>
+</div>
