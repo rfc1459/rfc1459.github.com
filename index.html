@@ -14,6 +14,7 @@ projects:
       description: A small, non-backtracking regex library
       url: https://bitbucket.org/rfc1459/libureg
 
+stuff: []
 ---
 
 <link rel="me" type="text/html" href="http://morpheus.level28.org/" />
@@ -81,10 +82,20 @@ projects:
   <a name="other"></a>
   <h1>Other stuff I work on</h1>
   <ul class="posts">
-    <li>
-      <div class="first">&nbsp;</div>
-      <div class="sep"> &raquo; </div>
-      <div class="second">Nothing noteworthy yet ;-)</div>
-    </li>
+    {% if page.stuff != empty %}
+      {% for elem in page.stuff %}
+        <li>
+          <div class="first"><span><a href="{{ elem.url }}">{{ elem.name }}</a></span></div>
+          <div class="sep"> &raquo; </div>
+          <div class="second">{{ elem.description }}</div>
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>
+        <div class="first">&nbsp;</div>
+        <div class="sep"> &raquo; </div>
+        <div class="second">Nothing noteworthy yet ;-)</div>
+      </li>
+    {% endif %}
   </ul>
 </div>
