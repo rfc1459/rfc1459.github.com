@@ -1,0 +1,47 @@
+---
+layout: post
+title: Tries
+tags: tries, dfa, azzurra
+commentIssueId: 2
+---
+
+IRC software, by its very nature, has to deal with lots of string operations.
+
+Daemons and services spend most of their CPU time doing some sort
+of dictionary lookup on protocol verbs, commands (and subcommands), channel
+and nick names and pattern matching on masks. Name lookup and pattern matching are
+almost universally optimized, but sometimes command/verb lookup is implemented
+in a simple yet slow way:
+
+{% highlight cpp %}
+if (strcmp(cmd, "PRIVMSG") == 0)
+   handle_privmsg(/* ... */);
+else if (strcmp(cmd, "NOTICE") == 0)
+   handle_notice(/* ... */);
+/* And so on... */
+{% endhighlight %}
+
+For a non-existent command, we would have to traverse all the branches of this
+mess, which in turn means traversing the incoming string for each comparison.
+And all this work would be wasted, because the command is not valid!
+
+Clearly we can (and should) do better. Ladies and gentlemen, I give you Tries.
+
+A [trie](http://en.wikipedia.org/wiki/Trie) is a wonderful data structure that
+behaves like an associative array with strings as keys, but that is structured
+like a search tree with each root-to-leaf path being a key. What makes it
+extremely useful for an IRC command parser is the fact that the input string
+must be traversed only once and the number of _character_ comparisons is bound
+by the height of the tree.
+
+Using a trie, the worst case scenario is a match on the longest valid command,
+which would require roughly the same amount of time of a single string
+comparison - quite a speedup when compared to the original code.
+
+Tries are not limited to NULL-terminated string keys, but they can also be
+used with integer keys or arbitrary byte strings, making them an excellent
+choice (for instance) as the basis for an advanced IPv6 clone scanner.
+
+(On a side note, tries are closely related with
+[DFAs](http://en.wikipedia.org/wiki/Deterministic_finite_automaton), which in
+turn are extremely useful to perform string validation).
