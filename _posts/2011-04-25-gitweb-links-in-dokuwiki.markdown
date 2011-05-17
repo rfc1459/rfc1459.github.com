@@ -2,7 +2,6 @@
 layout: post
 title: Gitweb links in DokuWiki
 tags: gitweb, dokuwiki, gwlinks
-commentIssueId: 1
 ---
 
 Azzurra has recently transitioned from [Mercurial](http://mercurial.selenic.com/) to [Git](http://git-scm.com/) for its public repositories.

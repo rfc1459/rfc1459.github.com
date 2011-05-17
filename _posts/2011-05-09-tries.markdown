@@ -2,7 +2,6 @@
 layout: post
 title: Tries
 tags: tries, dfa, azzurra
-commentIssueId: 2
 ---
 
 IRC software, by its very nature, has to deal with lots of string operations.
